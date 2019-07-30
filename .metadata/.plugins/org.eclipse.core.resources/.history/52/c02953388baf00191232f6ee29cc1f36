@@ -1,0 +1,5 @@
+package com.ali.service.Impl;
+
+public class UserServiceImpl {
+
+}

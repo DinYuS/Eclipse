@@ -1,0 +1,241 @@
+package org.ali.bank.dao;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import org.ali.bank.common.DataBaseConnection;
+import org.ali.bank.util.DateToString;
+import org.ali.bank.vo.Card;
+
+public class CardDAO {
+
+	/**
+	 * 通过用户的银行卡卡号来查询用户
+	 * @param otherCardId	银行卡卡号
+	 * @return				该银行卡卡号是否被使用
+	 */
+	public boolean verifyUserCardByCardId(String otherCardId) {
+		Card card = new Card();
+		card = this.queryUserCardByUserId(otherCardId);
+		if(card.getCuse().equals("N")){
+			return false;
+		}
+		return true;
+	}
+	
+	
+	
+	
+	/**
+	 * 寻找一个没被使用的银行卡号
+	 * 
+	 * @return 空卡的卡号
+	 */
+	@SuppressWarnings("static-access")
+	public String queryUnuseCard() {
+		Card card = new Card();
+		ResultSet rs = null;
+		Connection conn = null;
+		Statement st = null;
+		String sql = "SELECT Cid,Cuse FROM card WHERE Cuse='N' LIMIT 1";
+		try {
+			conn = new DataBaseConnection().getConnection();
+			st = conn.createStatement();
+			rs = st.executeQuery(sql);
+			if (rs.next()) {
+				card.setCid(rs.getString("Cid"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				DataBaseConnection.closeAll(conn, st, rs);
+				// rs.close();
+				// st.close();
+				// conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return card.getCid();
+	}
+
+	/**
+	 * 更新card表中银行卡的使用者的身份证号的SQL语句
+	 * 
+	 * @param uid 身份证号
+	 * @param cid 银行卡号
+	 * @return
+	 */
+	public int updateCard(String uid, String cid) {
+		String sql = "UPDATE card SET C_Uid ='" + uid + "' WHERE Cid='" + cid + "';";
+		return DateToString.dataBaseUpdate(sql);
+	}
+	
+	/**
+	 * 更新card表中银行卡的使用状态的SQL语句
+	 * @param cid
+	 * @return
+	 */
+	public int updateCardUse(String cid){
+		String sql = "UPDATE card SET Cuse ='Y' WHERE Cid='" + cid + "';";
+		return DateToString.dataBaseUpdate(sql);
+	}
+	
+	/**
+	 * 调用上面两条SQL语句进行开户操作，实质是写入数据库
+	 * @param uid
+	 * @param cid
+	 * @return
+	 */
+	public boolean openAccount(String uid, String cid) {
+		int result = 0;
+		result = this.updateCard(uid, cid);
+		if (result != 0) {
+			if(this.updateCardUse(cid)!=0){
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	
+	
+	/**
+	 * 更新数据库中card表中Cmoney(余额）的值，查询条件是身份证号码
+	 * @param uid	用户的身份证号码
+	 * @param interval	需要更改的值
+	 * @param flag		是加上还是减去，加上为1，减去为非1
+	 * @return			
+	 */
+	public int updateCardMoney(String uid,double interval,int flag){
+		if(flag==1){
+			String sql = "UPDATE card SET Cmoney = Cmoney+"+interval+" WHERE C_Uid="+uid;
+			return DateToString.dataBaseUpdate(sql);	
+		}
+		String sql = "UPDATE card SET Cmoney = Cmoney-"+interval+" WHERE C_Uid="+uid;
+		return DateToString.dataBaseUpdate(sql);
+	}
+	
+	
+	
+	/**
+	 * 往用户账户里存钱
+	 * @param uid	用户的身份证号码
+	 * @param interval		用户要存入的钱
+	 * @return			返回操作是否正确执行
+	 */
+	public boolean saveMoney(String uid,double interval){
+		int result=0;
+		result = this.updateCardMoney(uid, interval,1);
+		if(result==0){
+			return false;
+		}
+		return true;
+	}
+	
+	
+	/**
+	 * 用户取钱
+	 * @param uid	用户的身份证号码
+	 * @param interval		用户需要取出的钱数
+	 * @return			该操作是否正确执行
+	 */
+	public boolean takeMoney(String uid,double interval){
+		int result=0;
+		result = this.updateCardMoney(uid, interval,-1);
+		if(result==0){
+			return false;
+		}
+		return true;
+	}
+	
+	
+	/**
+	 * 查询数据库card表中C_Uid为uid的数据行
+	 * @param userId	用户的身份证号码
+	 * @return			返回满足该查询条件的对象
+	 */
+	@SuppressWarnings("static-access")
+	public Card queryUserCardByUserId(String uid){
+		Card card = new Card();
+		ResultSet rs =null;
+		Connection conn = null;
+		Statement st = null;
+		String sql = "SELECT Cid,C_Uid,Cmoney,Conline from card where C_Uid="+uid;
+		try {
+			conn = new DataBaseConnection().getConnection();
+			st=conn.createStatement();
+			rs = st.executeQuery(sql);
+			if(rs.next()){
+				card.setCid(rs.getString("Cid"));
+				card.setUid(rs.getString("C_Uid"));
+				card.setConline(rs.getString("Conline"));
+				card.setCmoney(rs.getDouble("Cmoney"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			try {
+				rs.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return card;
+	}
+	
+	
+	
+	/**
+	 * 查询该用户的账户余额
+	 * @param userId	该用户的身份证号码
+	 * @return			该用户的账户余额
+	 */
+	public double queryAccountMoney(String uid){
+		Card card = new Card();
+		card = this.queryUserCardByUserId(uid);
+		if(!card.getCid().equals("")){
+			return card.getCmoney();
+		}
+		return 0.0;
+	}
+	
+	
+	/**
+	 * 设置数据库card表中Conline项，表示该用户是否开了网银，1为开了，0为没开
+	 * @param uid	该用户的身份证号码
+	 * @param i			Conline的值
+	 * @return			返回该操作影响了数据库表中的几行
+	 */
+	public int updateCardOnline(String uid, int i) {
+		String sql = "UPDATE card SET Conline="+i+" WHERE C_Uid="+uid;
+		return DateToString.dataBaseUpdate(sql);
+	}
+	
+	
+	/**
+	 * 给用户开网银
+	 * @param userId	用户的身份证号码
+	 * @return			该操作是否正确执行
+	 */
+	public boolean openInterBank(String uid) {
+		int result=0;
+		result = this.updateCardOnline(uid, 1);
+		if(result==0){
+			return false;
+		}
+		return true;
+	}
+	
+	
+	
+	
+
+}

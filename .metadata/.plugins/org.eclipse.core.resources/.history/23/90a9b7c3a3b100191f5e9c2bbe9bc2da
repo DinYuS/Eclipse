@@ -1,0 +1,19 @@
+package com.ali.domain;
+
+import java.util.Date;
+
+import javax.print.attribute.standard.DateTimeAtCompleted;
+
+public class User {
+	private long id;
+	private String contact;
+	private String addressDesc;
+	private String postCode;
+	private String tel;
+	private long createBy;
+	private Date crearionDate;
+	private String contact;
+	private String contact;
+	private String contact;
+	
+}

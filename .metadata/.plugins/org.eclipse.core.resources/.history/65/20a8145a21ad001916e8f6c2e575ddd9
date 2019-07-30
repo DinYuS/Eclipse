@@ -1,0 +1,61 @@
+package com.ali.utils;
+
+import java.io.InputStream;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.Properties;
+
+import javax.sql.DataSource;
+
+import com.alibaba.druid.pool.DruidDataSourceFactory;
+
+/*
+ * JDBC工具类，使用Druid连接池
+ * @author 陈沔
+ *
+ */
+public class JDBCUtils {
+	private static DataSource ds;
+	static {
+		try {
+			//1.加载配置文件
+			Properties pro = new Properties();
+			//2.ClassLoader加载配置文件
+			InputStream is = JDBCUtils.class.getClassLoader().getResourceAsStream("druid.properties");
+			//3.加载到数据源中
+			pro.load(is);
+			//4.初始化连接池对象
+			ds = DruidDataSourceFactory.createDataSource(pro);
+		
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+	
+	/*
+	 * 获取连接池对象
+	 */
+	public static DataSource getDataSource() {
+		return ds;
+	}
+	
+	
+	/*
+	 * 获得空闲状态的连接对象
+	 */
+	public static Connection getConection() throws SQLException{
+		return ds.getConnection();
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}

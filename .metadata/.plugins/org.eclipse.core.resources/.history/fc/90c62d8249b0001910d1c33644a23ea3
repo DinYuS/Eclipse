@@ -1,0 +1,8 @@
+eclipse.preferences.version=1
+encoding//WebContent/add.jsp=UTF-8
+encoding//WebContent/list.jsp=UTF-8
+encoding//WebContent/login.jsp=UTF-8
+encoding//WebContent/update.jsp=UTF-8
+encoding//src/com/ali/util/JDBCUtils.java=UTF-8
+encoding//src/com/ali/web/CheckCodeServlet.java=UTF-8
+encoding//src/druid.properties=UTF-8

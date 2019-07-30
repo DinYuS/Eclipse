@@ -1,0 +1,5 @@
+package com.ali.domain;
+
+public class User{
+	
+}

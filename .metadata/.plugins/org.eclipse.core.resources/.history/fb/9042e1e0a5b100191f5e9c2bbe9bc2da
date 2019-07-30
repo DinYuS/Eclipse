@@ -1,0 +1,18 @@
+package com.ali.domain;
+
+public class User {
+	private long id;
+	private String userCode;
+	private String userName;
+	private String userPassword;
+	private int gender;
+	private String userCode;
+	private String userCode;
+	private String userCode;
+	private String userCode;
+	private String userCode;
+	private String userCode;
+	private String userCode;
+	private String userCode;
+	
+}

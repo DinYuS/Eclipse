@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<from action="ParamServlet" method="get">
+		<div>
+			<label>用户名 </label>
+			<input type="text" name="username"/>
+		</div>
+		
+		
+	</from>
+</body>
+</html>

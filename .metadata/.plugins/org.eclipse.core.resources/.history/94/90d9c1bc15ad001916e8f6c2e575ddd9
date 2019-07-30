@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>登陆页面</title>
+</head>
+<body>
+	<form action="LoginServlet" method="post">
+		<div>
+			<label>用户名：</label>
+			<input name="username"/>
+
+		</div>
+		<div>
+			<label>密&nbsp;码:</label>
+			<input type="password" name="password"/>
+		</div>
+		<input type="submit" value="登陆"/>
+	
+	
+	</form>
+</body>
+</html>

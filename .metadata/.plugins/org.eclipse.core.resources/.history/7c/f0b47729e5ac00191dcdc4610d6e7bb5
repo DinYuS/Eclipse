@@ -1,0 +1,8 @@
+package firstServlet;
+
+import javax.servlet.Servlet;
+
+public class ServletDemo1 implements Servlet{
+
+	
+}

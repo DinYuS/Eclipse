@@ -1,0 +1,71 @@
+package com.ali.service.user;
+
+import java.util.List;
+import java.util.Map;
+
+import com.ali.domain.User;
+import com.ali.util.PageBean;
+
+/*
+ * �û������ҵ��ӿ�
+ */
+public interface UserService {
+	/**
+	 *  ��ѯ�����û���Ϣ
+	 * @return List
+	 */
+	public List<User> findAll();
+	
+	/**
+	 * ��½����
+	 * @param User
+	 * @return User
+	 */
+	public User login(User user);
+	
+	/**
+	 * ����User
+	 * @param User
+	 * @return User
+	 */
+	public void addUser(User user);
+	
+	/**
+	 * �޸�User
+	 * @param User
+	 * @return User
+	 */
+	public void updateUser(User user);
+	
+	/**
+	 * ɾ��User
+	 * @param id
+	 * @return 
+	 */
+	public void deleteUser(String id);
+	
+	/**
+	 * ����ɾ���û���Ϣ
+	 * @param String[] ids
+	 * @return 
+	 */
+	void delSelectedUser(String[] ids);
+	
+	/**
+	 * ����ID���в�ѯ
+	 * @param int id
+	 * @return user
+	 */
+	User findUserById(String id);
+	
+	/**
+	 * ��ҳ������ѯ
+	 * @param current
+	 * @param rows
+	 * @param condition
+	 * @return list
+	 */
+	PageBean<User> findUserByPage(String currentPage,String rows,Map<String,String[]> condition);
+	
+	
+}

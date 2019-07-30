@@ -1,0 +1,48 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"
+    import="java.util.*,com.ali.domain.User"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>el获取数据</title>
+</head>
+<body>
+	<%
+	
+		User user=new User();
+		user.setName("张三");
+		user.setAge(23);
+		user.setBirthday(new Date());
+		request.setAttribute("u", user);
+		
+		List list=new ArrayList();
+		list.add("aaa");
+		list.add("bbb");
+		list.add(user);
+		request.setAttribute("list", list);
+		
+		Map map=new HashMap();
+		map.put("sname","李四");
+		map.put("gender","女");
+		map.put("user",user);
+		request.setAttribute("map", map);
+		
+		
+		
+	%>
+	<h3>el获取对象中的值</h3>
+	<%-- 
+		通过对象的属性来获取
+		setter或getter方法
+		setName-->Name-->name	
+	 --%>
+	 ${requestScope.u.name }<br>
+	
+	
+	
+	
+	
+	
+</body>
+</html>

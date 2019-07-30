@@ -1,0 +1,20 @@
+package com.ali.dao;
+
+import com.ali.domain.User;
+
+/*
+ * 操作数据库中的User01表类->以操作对象的方式去操作表
+ */
+public class UserDAO {
+	public User login(User user){
+		try {
+			//1.SQL
+			String sql = "SELECT * FROM user01 WHERE username=? AND password=?";
+			
+			
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+}

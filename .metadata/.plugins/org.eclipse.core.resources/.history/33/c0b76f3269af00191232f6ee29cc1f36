@@ -1,0 +1,11 @@
+package com.ali.dao;
+
+import com.ali.domain.User;
+
+/*
+ * 用来操作用户的DAO接口
+ */
+public interface UserDao {
+	
+	User findUserByUsernameAndPassword(String username,String password);
+}

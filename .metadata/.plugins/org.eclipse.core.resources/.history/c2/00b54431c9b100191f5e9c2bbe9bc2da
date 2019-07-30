@@ -1,0 +1,65 @@
+package com.ali.dao.user;
+
+import java.util.List;
+import java.util.Map;
+
+import com.ali.domain.User;
+import com.ali.util.PageBean;
+
+public class UserDaoImpl implements UserDao {
+
+	@Override
+	public User findUserByUsernameAndPassword(String username, String password) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void add(User user) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void update(User user) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(int id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public User findById(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<User> findAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int findTotalCount(Map<String, String[]> condition) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public List<User> findByPage(int start, int rows, Map<String, String[]> condition) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PageBean<User> findUserByPage(String currentPage, String rows, Map<String, String[]> condition) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

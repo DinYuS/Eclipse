@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<servers>
+  <server auto-publish-setting="2" auto-publish-time="1" configuration-id="/Servers/Tomcat v8.5 Server at localhost-config" deployDir="wtpwebapps" hostname="localhost" id="Tomcat v8.5 Server at localhost" name="Tomcat v8.5 Server at localhost" runtime-id="Apache Tomcat v8.5" server-type="org.eclipse.jst.server.tomcat.85" server-type-id="org.eclipse.jst.server.tomcat.85" start-timeout="45" stop-timeout="15" testEnvironment="true" timestamp="10">
+    <list key="modules" value0="firstWeb::org.eclipse.jst.jee.server:firstWeb::jst.web::3.1" value1="firstServlet::org.eclipse.jst.jee.server:firstServlet::jst.web::3.1" value2="servletDemo02::org.eclipse.jst.jee.server:servletDemo02::jst.web::3.1" value3="loginServlet::org.eclipse.jst.jee.server:loginServlet::jst.web::3.1" value4="day0724::org.eclipse.jst.jee.server:day0724::jst.web::3.1" value5="day0726::org.eclipse.jst.jee.server:day0726::jst.web::3.1" value6="smbms01::org.eclipse.jst.jee.server:smbms01::jst.web::3.1" value7="smbmsTemplate::org.eclipse.jst.jee.server:smbmsTemplate::jst.web::3.1"/>
+  </server>
+</servers>

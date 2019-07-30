@@ -1,0 +1,7 @@
+package com.ali.domain;
+
+public class User {
+	private long id;
+	private char contact;
+	
+}

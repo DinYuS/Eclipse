@@ -1,0 +1,9 @@
+package com.ali.utils;
+/**
+ * JDBC工具类，使用Druid连接池
+ * @author 陈沔
+ *
+ */
+public class JDBCUtils {
+
+}

@@ -1,0 +1,18 @@
+package work1;
+/**
+ * 
+ * @author ³Âãæ
+ *
+ */
+public class text1 {
+	/**
+	 * 
+	 * @param arg
+	 */
+	public static void main(String arg[]) {
+		System.out.print("Hello Word!");
+		System.out.println("");
+		System.out.println();
+		char n= new char();
+	}
+}

@@ -1,0 +1,19 @@
+package com.ali.service.Impl;
+
+import java.util.List;
+
+import com.ali.dao.UserDao;
+import com.ali.dao.Impl.UserDaoImpl;
+import com.ali.domain.User;
+import com.ali.service.UserService;
+
+public class UserServiceImpl implements UserService{
+	
+	private UserDao dao=new UserDaoImpl();
+	
+	@Override
+	public List<User> findAll() {
+		// TODO 自动生成的方法存根
+		return null;
+	}
+}

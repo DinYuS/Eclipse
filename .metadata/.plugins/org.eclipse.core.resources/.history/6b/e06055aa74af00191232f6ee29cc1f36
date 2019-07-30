@@ -1,0 +1,26 @@
+package com.ali.test;
+
+import com.ali.dao.UserDao;
+import com.ali.dao.Impl.UserDaoImpl;
+import com.ali.domain.User;
+
+public class UserDaoTest {
+
+	public static void main(String[] args) {
+		// TODO 自动生成的方法存根
+		UserDao dao=new UserDaoImpl();
+		//测试1
+		User user=new User();
+		user.setUsername("admin");
+		user.setPassword("123");
+		
+		User userA=dao.findUserByUsernameAndPassword(user.getUsername(), user.getPassword());
+		
+		if(userA!=null) {
+			System.out.println("登陆验证方法测试成功");
+		}else {
+			System.out.println("登陆验证方法测试失败");
+		}
+	}
+
+}

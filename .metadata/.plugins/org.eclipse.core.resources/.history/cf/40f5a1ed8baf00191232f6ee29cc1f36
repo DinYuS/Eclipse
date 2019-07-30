@@ -1,0 +1,53 @@
+package com.ali.service.Impl;
+
+import java.util.List;
+
+import com.ali.dao.UserDao;
+import com.ali.dao.Impl.UserDaoImpl;
+import com.ali.domain.User;
+import com.ali.service.UserService;
+
+public class UserServiceImpl implements UserService{
+	
+	private UserDao dao=new UserDaoImpl();
+	
+	@Override
+	public List<User> findAll() {
+		// TODO 自动生成的方法存根
+		//调用Dao完成查询
+		return dao.findAll();
+	}
+	@Override
+	public User login(User user) {
+		// TODO 自动生成的方法存根
+		return dao.findUserByUsernameAndPassword(user.getUsername(), user.getPassword());
+	}
+	@Override
+	public void addUser(User user) {
+		// TODO 自动生成的方法存根
+		dao.add(user);
+	}
+	@Override
+	public void updateUser(User user) {
+		// TODO 自动生成的方法存根
+		dao.update(user);
+	}
+	@Override
+	public void deleteUser(String id) {
+		// TODO 自动生成的方法存根
+		dao.delete(Integer.parseInt(id));
+	}
+	@Override
+	public void delSelectedUser(String[] ids) {
+		// TODO 自动生成的方法存根
+		
+	}
+	@Override
+	public User findUserById(String id) {
+		// TODO 自动生成的方法存根
+		return null;
+	}
+	
+	
+	
+}

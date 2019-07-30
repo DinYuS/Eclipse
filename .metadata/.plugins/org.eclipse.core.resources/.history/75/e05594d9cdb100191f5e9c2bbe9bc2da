@@ -1,0 +1,8 @@
+package com.ali.service.user;
+
+public class Snippet {
+	public static void main(String[] args) {
+		smbms_user
+	}
+}
+

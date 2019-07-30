@@ -1,0 +1,73 @@
+package com.ali.dao.user;
+
+import java.util.List;
+
+import com.ali.dao.UserDao;
+import com.ali.dao.Impl.UserDaoImpl;
+import com.ali.domain.User;
+
+public class UserDaoTest {
+
+	public static void main(String[] args) {
+		// TODO �Զ����ɵķ������
+		UserDao dao=new UserDaoImpl();
+		//����1
+		/*
+		User user=new User();
+		user.setUsername("admin");
+		user.setPassword("123");
+		
+		User userA=dao.findUserByUsernameAndPassword(user.getUsername(), user.getPassword());
+		
+		if(userA!=null) {
+			System.out.println("��½��֤�������Գɹ�");
+		}else {
+			System.out.println("��½��֤��������ʧ��");
+		}
+		*/
+		
+		//����2
+		/*
+		User userB=new User();
+		userB.setUsername("manager");
+		userB.setPassword("456");
+		userB.setName("����");
+		userB.setGender("Ů");
+		userB.setAge(23);
+		userB.setQq("134135413");
+		userB.setAdress("���ּ���");
+		userB.setEmail("12414153@12.com");
+		
+		dao.add(userB);
+		List list=dao.findAll();
+		if(list.size()==2) {
+			System.out.println("��֤�ɹ�");
+		}else {
+			System.out.println("��֤ʧ��");
+		}
+		*/
+		
+		//����3 findById
+		/*
+		User user=dao.findById(2);
+//		user.setPassword("789");
+		user.setName("����2");
+//		userC.setGender("Ů");
+//		userC.setAge(23);
+//		userC.setQq("134135413");
+//		userC.setAdress("���ּ���");
+//		userC.setEmail("12414153@12.com");
+		
+		dao.update(user);
+		User userC=dao.findById(2);
+		System.out.println(userC.getName());
+		*/
+		
+		
+		//����ɾ��
+		/*
+		dao.delete(2);
+		*/
+	}
+
+}

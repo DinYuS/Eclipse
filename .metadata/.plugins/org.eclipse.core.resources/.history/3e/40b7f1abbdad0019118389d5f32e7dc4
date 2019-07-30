@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<script>
+		/*
+			分析：点击超链接或图片时，换一张
+				1.给超链接和图片绑定单击事件
+		*/
+	
+	</script>
+</head>
+<body>
+	<img id="checkCode" src="/day0724/CheckCodeServlet">
+	<a id="change" href="#">看不清楚，换一张？</a>
+</body>
+</html>

@@ -1,0 +1,13 @@
+package com.ali.test;
+
+import com.ali.dao.UserDao;
+import com.ali.dao.Impl.UserDaoImpl;
+
+public class UserDaoTest {
+
+	public static void main(String[] args) {
+		// TODO 自动生成的方法存根
+		UserDao dao=new UserDaoImpl()
+	}
+
+}

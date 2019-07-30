@@ -1,0 +1,87 @@
+package com.ali.web.user;
+
+import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Map;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.websocket.Decoder.Binary;
+
+import org.apache.commons.beanutils.BeanUtils;
+
+import com.ali.domain.User;
+import com.ali.service.user.UserService;
+import com.ali.service.user.UserServiceImpl;
+
+/**
+ * Servlet implementation class UserServlet
+ */
+@WebServlet("/userServlet")
+public class UserServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public UserServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String method=request.getParameter("method");
+		System.out.println("method------>"+method);
+		
+		if(method!=null && method.equals("add")) {
+			//执行增加操作
+			this.add(request, response);
+		}
+		
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+	private void add(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("add()==========");
+		Map<String,String[]> map=request.getParameterMap();
+		User user=new User();
+		//对birthday
+		try {
+			user.setBirthday(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("birthday")));
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		try {
+			BeanUtils.populate(user, map);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		//gender
+		user.setGender(Integer.valueOf(request.getParameter("gender")));
+		
+		
+		
+		
+		
+		
+		UserService service=new UserServiceImpl();
+		
+		
+	}
+
+}

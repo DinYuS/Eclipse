@@ -1,0 +1,34 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form>
+		<label>用户名：</label>
+		<div><input type="text" name="username"/></div>
+		
+		<label>密码：</label>
+		<div><input type="password" name="password"/></div>
+		
+		<div>
+			验证码：<input type="text" name="checkCode"/>
+		</div>
+		
+		<div>
+			<img id="img" src="<%=request.getContextPath() %> + 'CheckCodeServlet'"/>
+		
+		</div>
+	
+	
+	
+	
+	
+	
+	
+	</form>
+</body>
+</html>

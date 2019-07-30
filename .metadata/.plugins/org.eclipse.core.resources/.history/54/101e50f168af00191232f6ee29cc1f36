@@ -1,0 +1,8 @@
+package com.ali.dao;
+
+/*
+ * 用来操作用户的DAO接口
+ */
+public interface UserDao {
+	
+}

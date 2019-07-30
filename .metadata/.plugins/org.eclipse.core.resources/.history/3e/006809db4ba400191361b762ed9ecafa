@@ -1,0 +1,7 @@
+package work1;
+
+public class text1 {
+	public static void main(String arg[]) {
+		System.out.print("Hello Word!");
+	}
+}

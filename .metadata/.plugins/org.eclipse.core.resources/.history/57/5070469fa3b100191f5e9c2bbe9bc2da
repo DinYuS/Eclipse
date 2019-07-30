@@ -1,0 +1,15 @@
+package com.ali.domain;
+
+public class User {
+	private long id;
+	private String contact;
+	private String addressDesc;
+	private String postCode;
+	private String tel;
+	private long createBy;
+	private String contact;
+	private String contact;
+	private String contact;
+	private String contact;
+	
+}
